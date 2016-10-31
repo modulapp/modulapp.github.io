@@ -1,0 +1,3193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Module - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a><ul class='members'><li data-type='member'><a href="App.html#.events">events</a></li><li data-type='member'><a href="App.html#.status">status</a></li><li data-type='member'><a href="App.html#config">config</a></li><li data-type='member'><a href="App.html#id">id</a></li><li data-type='member'><a href="App.html#options">options</a></li><li data-type='member'><a href="App.html#status">status</a></li></ul><ul class='methods'><li data-type='method'><a href="App.html#addConfig">addConfig</a></li><li data-type='method'><a href="App.html#addOptions">addOptions</a></li><li data-type='method'><a href="App.html#destroy">destroy</a></li><li data-type='method'><a href="App.html#resolve">resolve</a></li><li data-type='method'><a href="App.html#setup">setup</a></li><li data-type='method'><a href="App.html#start">start</a></li><li data-type='method'><a href="App.html#stop">stop</a></li></ul></li><li><a href="Module.html">Module</a><ul class='members'><li data-type='member'><a href="Module.html#.events">events</a></li><li data-type='member'><a href="Module.html#.status">status</a></li><li data-type='member'><a href="Module.html#dependencies">dependencies</a></li><li data-type='member'><a href="Module.html#id">id</a></li><li data-type='member'><a href="Module.html#options">options</a></li><li data-type='member'><a href="Module.html#status">status</a></li><li data-type='member'><a href="Module.html#version">version</a></li></ul><ul class='methods'><li data-type='method'><a href="Module.html#addDependencies">addDependencies</a></li><li data-type='method'><a href="Module.html#addOptions">addOptions</a></li><li data-type='method'><a href="Module.html#destroy">destroy</a></li><li data-type='method'><a href="Module.html#disable">disable</a></li><li data-type='method'><a href="Module.html#enable">enable</a></li><li data-type='method'><a href="Module.html#setup">setup</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="App.html#event:destroyed">destroyed</a></li><li><a href="App.html#event:destroying">destroying</a></li><li><a href="App.html#event:resolved">resolved</a></li><li><a href="App.html#event:resolving">resolving</a></li><li><a href="App.html#event:setting_up">setting_up</a></li><li><a href="App.html#event:setup">setup</a></li><li><a href="App.html#event:started">started</a></li><li><a href="App.html#event:starting">starting</a></li><li><a href="App.html#event:stopped">stopped</a></li><li><a href="App.html#event:stopping">stopping</a></li><li><a href="Module.html#event:destroyed">destroyed</a></li><li><a href="Module.html#event:destroying">destroying</a></li><li><a href="Module.html#event:disabled">disabled</a></li><li><a href="Module.html#event:disabling">disabling</a></li><li><a href="Module.html#event:enabled">enabled</a></li><li><a href="Module.html#event:enabling">enabling</a></li><li><a href="Module.html#event:setting_up">setting_up</a></li><li><a href="Module.html#event:setup">setup</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Module</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        Module
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    <h4 class="name" id="Module"><span class="type-signature"></span>new Module<span class="signature">(id<span class="signature-attributes">non-null</span>, initialOptions<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Class representing a Module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line168">line 168</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The id parameter is required, it could be either a String or an Object representing the package.json.</p>
+<p>In case of the package.json is provided, the id, version, dependencies and options will be extracted from this Object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
+let myModule = new Module('myModule');
+
+myModule.foo = 'foo';
+myModule.bar = function() {
+    // this is a custom method
+};
+
+myModule.setup = function(app, options, imports, done) {
+    // this is overriding the setup  method
+
+    let logger = imports.logger;
+    logger.log('setting up myModule');
+    done(null);
+};
+
+module.exports = myModule;</code></pre>
+
+        <p class="code-caption">constructor with a String argument</p>
+    
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
+let myModule = new Module('myModule');
+console.log(myModule.id); // -> 'myModule'
+console.log(myModule.status); // -> 'created'
+console.log(myModule.version); // -> undefined
+console.log(myModule.options); // -> {}
+console.log(myModule.dependencies); // -> []</code></pre>
+
+        <p class="code-caption">constructor with a Object argument</p>
+    
+    <pre class="prettyprint"><code>const packagejson = require('package.json');
+// {
+//    name: 'myModule',
+//    version: '1.0.0',
+//    module: {
+//      dependencies: ['logger'],
+//      options: {
+//        port: 8080
+//      }
+//    }
+// }
+
+const Module = require('modulapp').Module;
+let myModule = new Module('myModule');
+console.log(myModule.id); // -> 'myModule'
+console.log(myModule.status); //  ->'created'
+console.log(myModule.version); // -> '1.0.0'
+console.log(myModule.options); // -> {port: 8080}
+console.log(myModule.dependencies); // -> ['logger']</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Either a String id of the module or an Object representing the package.json</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initialOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>{}</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Options for the module</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li><a href="Module.html#event:setting_up">Module#event:setting_up</a></li>
+
+    <li><a href="Module.html#event:setup">Module#event:setup</a></li>
+
+    <li><a href="Module.html#event:enabling">Module#event:enabling</a></li>
+
+    <li><a href="Module.html#event:enabled">Module#event:enabled</a></li>
+
+    <li><a href="Module.html#event:disabling">Module#event:disabling</a></li>
+
+    <li><a href="Module.html#event:disabled">Module#event:disabled</a></li>
+
+    <li><a href="Module.html#event:destroying">Module#event:destroying</a></li>
+
+    <li><a href="Module.html#event:destroyed">Module#event:destroyed</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li>EventEmitter</li>
+    </ul>
+
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".events"><span class="type-signature">(static, readonly, non-null) </span>events<span class="type-signature"> :Object</span></h4>
+
+
+<p class="summary">All supported events of Module class.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line262">line 262</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <pre class="prettyprint source lang-javascript"><code>{
+    CREATING: 'creating',
+    CREATED: 'created',
+    SETTING_UP: 'setting_up',
+    SETUP: 'setup',
+    ENABLING: 'enabling',
+    ENABLED: 'enabled',
+    DISABLING: 'disabling',
+    DISABLED: 'disabled',
+    DESTROYING: 'destroying',
+    DESTROYED: 'destroyed'
+}</code></pre>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>myModule.on(Module.events.SETUP, () => {
+    // define behavior when myModule has been setup
+});</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".status"><span class="type-signature">(static, readonly, non-null) </span>status<span class="type-signature"> :Object</span></h4>
+
+
+<p class="summary">All supported status of Module class.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line295">line 295</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Don't confuse this static method Module.status with the instance method <a href="Module.html#status">Module#status</a>.</p>
+<pre class="prettyprint source lang-javascript"><code>{
+    CREATED: 'created',
+    SETUP: 'setup',
+    ENABLED: 'enabled',
+    DISABLED: 'disabled',
+    DESTROYED: 'destroyed'
+}</code></pre>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>if (myModule.status === Module.status.ENABLED) {
+    myModule.foo();
+}</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="dependencies"><span class="type-signature">(non-null) </span>dependencies<span class="type-signature"> :Array.&lt;String></span></h4>
+
+
+<p class="summary">The dependencies of the module.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line424">line 424</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Getting dependencies never return null, at least an empty Array [].
+Setting null or undefined replaces the current config by an empty Array [].
+Setting a String will build an Array with that single String.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;String></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(myModule.dependencies); // -> ['logger']
+myModule.dependencies = ['server', 'db']; // -> ['server', 'db']
+myModule.dependencies = null; // -> []
+myModule.dependencies = 'server'; // -> ['server']</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="id"><span class="type-signature">(readonly, non-null) </span>id<span class="type-signature"> :String</span></h4>
+
+
+<p class="summary">The id of the module.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line313">line 313</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">String</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(myModule.id); // -> 'myModule'
+myModule.id = 'anotherId'; // -> throw Error read-only</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="options"><span class="type-signature">(non-null) </span>options<span class="type-signature"> :Object</span></h4>
+
+
+<p class="summary">The options of the module.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line381">line 381</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Getting options never return null, at least an empty Object {}.
+Setting null or undefined replaces the current options by an empty Object {}.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(myModule.options); // -> {port: 8080}
+myModule.options = {url: 'localhost'}; // -> {url: 'localhost'}
+myModule.options = null; // -> {}</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="status"><span class="type-signature">(readonly, non-null) </span>status<span class="type-signature"> :String</span></h4>
+
+
+<p class="summary">The status of the module.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line333">line 333</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The value is part of the <a href="Module.html#.status">supported status</a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">String</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(myModule.status); // -> 'created'
+myModule.status = Module.status.RESOLVED; // -> throw Error read-only</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="version"><span class="type-signature">(readonly, nullable) </span>version<span class="type-signature"> :String</span></h4>
+
+
+<p class="summary">The version of the module.</p>
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line351">line 351</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">String</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(myModule.version); // -> '1.0.0'
+myModule.version = '1.0.1'; // -> throw Error read-only</code></pre>
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="addDependencies"><span class="type-signature"></span>addDependencies<span class="signature">(&hellip;dependencies<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Add dependencies to the module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line491">line 491</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Merge with existing dependencies and check flatten the Array, remove duplicates and remove null.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(myModule.dependencies); // -> ['logger']
+myModule.addDependencies(['server']); // -> ['logger', 'server']
+myModule.addDependencies(null); // -> ['logger', 'server']
+myModule.addDependencies(); // -> ['logger', 'server']
+myModule.addDependencies('socket'); // -> ['logger', 'server', 'socket']
+myModule.addDependencies('socket', 'utils', ['db', 'server']); // -> ['logger', 'server', 'socket', 'utils', 'db']</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dependencies</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+|
+
+<span class="param-type">Array.&lt;String></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>The dependencies to add</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        <p>ERR_MOD_005 if a non-String dependency is found</p>
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="addOptions"><span class="type-signature"></span>addOptions<span class="signature">(options<span class="signature-attributes">opt, nullable</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">Add options to the module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line462">line 462</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>console.log(myModule.options); // -> {port: 8080}
+myModule.addOptions ({url: 'localhost'}); // -> {port: 8080, url: 'localhost'}
+myModule.options(null); // -> {port: 8080, url: 'localhost'}
+myModule.options(); // -> {port: 8080, url: 'localhost'}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                    &lt;nullable><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>{}</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>The options to add</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        <p>ERR_MOD_004 if the options parameter is not an Object</p>
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="destroy"><span class="type-signature"></span>destroy<span class="signature">(app<span class="signature-attributes">non-null</span>, options<span class="signature-attributes">non-null</span>, imports<span class="signature-attributes">non-null</span>, done<span class="signature-attributes">non-null</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">The destroy function of the module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line655">line 655</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Executed while the app is being destroyed.</p>
+<p>Could be overriden, does nothing by default.</p>
+<p>Once the app is resolved, this method is not available anymore.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
+let myModule = new Module('myModule');
+
+// override the default destroy function
+myModule.destroy = function(app, options, imports, done) {
+   // place your custom code to be executed when myModule is destroyed
+}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>app</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="App.html">App</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The App instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The options of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>imports</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The dependencies of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Module.html#~LifecycleDoneCB">Module~LifecycleDoneCB</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback to return</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="disable"><span class="type-signature"></span>disable<span class="signature">(app<span class="signature-attributes">non-null</span>, options<span class="signature-attributes">non-null</span>, imports<span class="signature-attributes">non-null</span>, done<span class="signature-attributes">non-null</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">The disable function of the module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line624">line 624</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Executed while the app is being stopped.</p>
+<p>Could be overriden, does nothing by default.</p>
+<p>Once the app is resolved, this method is not available anymore.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
+let myModule = new Module('myModule');
+
+// override the default disable function
+myModule.disable = function(app, options, imports, done) {
+   // place your custom code to be executed when myModule is disabled
+}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>app</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="App.html">App</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The App instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The options of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>imports</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The dependencies of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Module.html#~LifecycleDoneCB">Module~LifecycleDoneCB</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback to return</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="enable"><span class="type-signature"></span>enable<span class="signature">(app<span class="signature-attributes">non-null</span>, options<span class="signature-attributes">non-null</span>, imports<span class="signature-attributes">non-null</span>, done<span class="signature-attributes">non-null</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">The enable function of the module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line593">line 593</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Executed while the app is being started.</p>
+<p>Could be overriden, does nothing by default.</p>
+<p>Once the app is resolved, this method is not available anymore.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
+let myModule = new Module('myModule');
+
+// override the default enable function
+myModule.enable = function(app, options, imports, done) {
+   // place your custom code to be executed when myModule is enable
+}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>app</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="App.html">App</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The App instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The options of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>imports</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The dependencies of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Module.html#~LifecycleDoneCB">Module~LifecycleDoneCB</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback to return</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setup"><span class="type-signature"></span>setup<span class="signature">(app<span class="signature-attributes">non-null</span>, options<span class="signature-attributes">non-null</span>, imports<span class="signature-attributes">non-null</span>, done<span class="signature-attributes">non-null</span>)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">The setup function of the module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line562">line 562</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Executed while the app is being setup.</p>
+<p>Could be overriden, does nothing by default.</p>
+<p>Once the app is resolved, this method is not available anymore.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
+let myModule = new Module('myModule');
+
+// override the default setup function
+myModule.setup = function(app, options, imports, done) {
+   // place your custom code to be executed when myModule is setup
+}</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>app</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="App.html">App</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The App instance</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The options of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>imports</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The dependencies of the module</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>done</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Module.html#~LifecycleDoneCB">Module~LifecycleDoneCB</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback to return</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+
+    
+
+    <h4 class="name" id="~LifecycleDoneCB"><span class="type-signature"></span>LifecycleDoneCB<span class="signature">(err)</span><span class="type-signature"></span></h4>
+
+    
+    <p class="summary">The done callback of the lifecycles methods of module.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="module.js.html">module.js</a>, <a href="module.js.html#line526">line 526</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>//TODO since</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:nauwep.dev@gmail.com">nauwep</a></li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The done callback of the lifecycles methods of module.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>err</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Error</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Any error raised while executing the method, null if none</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+    
+
+    
+        <h3 class="subsection-title">Events</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:destroyed">destroyed</h4>
+
+    
+    <p class="summary">Destroyed event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line196">line 196</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Destroyed event. When the module has been destroyed.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:destroying">destroying</h4>
+
+    
+    <p class="summary">Destroying event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line184">line 184</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Destroying event. When the module is about to be destroyed.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:disabled">disabled</h4>
+
+    
+    <p class="summary">Disabled event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line169">line 169</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Disabled event. When the module has been disabled.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:disabling">disabling</h4>
+
+    
+    <p class="summary">Disabling event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line157">line 157</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Disabling event. When the module is about to be disabled.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:enabled">enabled</h4>
+
+    
+    <p class="summary">Enabled event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line142">line 142</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Enabled event. When the module has been enabled.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:enabling">enabling</h4>
+
+    
+    <p class="summary">Enabling event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line130">line 130</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Enabling event. When the module is about to be enabled.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:setting_up">setting_up</h4>
+
+    
+    <p class="summary">Setting up event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line103">line 103</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Setting up event. When the module is beginning its setup.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="event:setup">setup</h4>
+
+    
+    <p class="summary">Setup event.</p>
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="moduleWrapper.js.html">moduleWrapper.js</a>, <a href="moduleWrapper.js.html#line115">line 115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Setup event. When the module has been setup.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Mon Oct 31 2016 15:54:39 GMT+0100 (Paris, Madrid) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

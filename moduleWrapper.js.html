@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>moduleWrapper.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="App.html">App</a><ul class='members'><li data-type='member'><a href="App.html#.events">events</a></li><li data-type='member'><a href="App.html#.status">status</a></li><li data-type='member'><a href="App.html#config">config</a></li><li data-type='member'><a href="App.html#id">id</a></li><li data-type='member'><a href="App.html#options">options</a></li><li data-type='member'><a href="App.html#status">status</a></li></ul><ul class='methods'><li data-type='method'><a href="App.html#addConfig">addConfig</a></li><li data-type='method'><a href="App.html#addOptions">addOptions</a></li><li data-type='method'><a href="App.html#destroy">destroy</a></li><li data-type='method'><a href="App.html#resolve">resolve</a></li><li data-type='method'><a href="App.html#setup">setup</a></li><li data-type='method'><a href="App.html#start">start</a></li><li data-type='method'><a href="App.html#stop">stop</a></li></ul></li><li><a href="Module.html">Module</a><ul class='members'><li data-type='member'><a href="Module.html#.events">events</a></li><li data-type='member'><a href="Module.html#.status">status</a></li><li data-type='member'><a href="Module.html#dependencies">dependencies</a></li><li data-type='member'><a href="Module.html#id">id</a></li><li data-type='member'><a href="Module.html#options">options</a></li><li data-type='member'><a href="Module.html#status">status</a></li><li data-type='member'><a href="Module.html#version">version</a></li></ul><ul class='methods'><li data-type='method'><a href="Module.html#addDependencies">addDependencies</a></li><li data-type='method'><a href="Module.html#addOptions">addOptions</a></li><li data-type='method'><a href="Module.html#destroy">destroy</a></li><li data-type='method'><a href="Module.html#disable">disable</a></li><li data-type='method'><a href="Module.html#enable">enable</a></li><li data-type='method'><a href="Module.html#setup">setup</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="App.html#event:destroyed">destroyed</a></li><li><a href="App.html#event:destroying">destroying</a></li><li><a href="App.html#event:resolved">resolved</a></li><li><a href="App.html#event:resolving">resolving</a></li><li><a href="App.html#event:setting_up">setting_up</a></li><li><a href="App.html#event:setup">setup</a></li><li><a href="App.html#event:started">started</a></li><li><a href="App.html#event:starting">starting</a></li><li><a href="App.html#event:stopped">stopped</a></li><li><a href="App.html#event:stopping">stopping</a></li><li><a href="Module.html#event:destroyed">destroyed</a></li><li><a href="Module.html#event:destroying">destroying</a></li><li><a href="Module.html#event:disabled">disabled</a></li><li><a href="Module.html#event:disabling">disabling</a></li><li><a href="Module.html#event:enabled">enabled</a></li><li><a href="Module.html#event:enabling">enabling</a></li><li><a href="Module.html#event:setting_up">setting_up</a></li><li><a href="Module.html#event:setup">setup</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">moduleWrapper.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+
+const EventEmitter = require('events').EventEmitter;
+const ErrorsFactory = require('errors-factory');
+const _ = require('lodash');
+
+const _errors = new ErrorsFactory(require('./resources/errors.json'));
+const _events = require('./resources/events.json').module;
+const _status = require('./resources/status.json').module;
+
+class ModuleWrapper extends EventEmitter {
+
+    constructor(_module, _app, _options = {}, _imports = {}) {
+
+        if (_.isUndefined(_module) || _.isUndefined(_app) || _.isNull(_module) || _.isNull(_app)) {
+            throw _errors.ERR_MOD_006;
+        }
+
+        if (_module.constructor.name !== 'Module') {
+            throw _errors.ERR_MOD_007;
+        }
+
+        if (_app.constructor.name !== 'App') {
+            throw _errors.ERR_MOD_008;
+        }
+
+        super();
+
+        this.module = _module;
+        this.app = _app;
+        this.imports = _imports;
+
+        // Get properties from module
+
+        this.id = this.module.id;
+        if (_.isString(this.module.version)) {
+            this.version = this.module.version;
+        }
+        this.status = _status.CREATED;
+        this.options = _.merge(_options, this.module.options);
+        this.package = this.module.package;
+        this.dependencies = this.module.dependencies;
+
+        // Get lifecycle functions then remove them from module
+
+        // Setup
+        this._initialFuncSetup = this.module.setup;
+        this.setup = _.bind(this._initialFuncSetup, this.module, this.app, this.options, this.imports);
+        this.module.setup = undefined;
+
+        // Enable
+        this._initialFuncEnable = this.module.enable;
+        this.enable = _.bind(this._initialFuncEnable, this.module, this.app, this.options, this
+            .imports);
+        this.module.enable = undefined;
+
+        // Disable
+        this._initialFuncDisable = this.module.disable;
+        this.disable = _.bind(this._initialFuncDisable, this.module, this.app, this.options,
+            this.imports);
+        this.module.disable = undefined;
+
+        // Destroy
+        this._initialFuncDestroy = this.module.destroy;
+        this.destroy = _.bind(this._initialFuncDestroy, this.module, this.app, this.options,
+            this.imports);
+        this.module.destroy = undefined;
+
+    }
+
+    addOptions(newOptions = {}) {
+        if (this.status !== _status.CREATED) {
+            throw _errors.ERR_MOD_010;
+        }
+        if (_.isPlainObject(newOptions) || _.isNull(newOptions)) {
+            this.options = _.merge(this.options, newOptions);
+        } else {
+            throw _errors.ERR_MOD_004;
+        }
+    }
+
+    addImports(newImports = {}) {
+        if (this.status !== _status.CREATED) {
+            throw _errors.ERR_MOD_011;
+        }
+        if (_.isPlainObject(newImports) || _.isNull(newImports)) {
+            _.forEach(newImports, (wrapperInstance) => {
+                if (wrapperInstance.constructor.name !== 'ModuleWrapper') {
+                    throw _errors.ERR_MOD_012;
+                }
+            });
+            this.imports = _.merge(this.imports, newImports);
+        } else {
+            throw _errors.ERR_MOD_009;
+        }
+    }
+
+    setupModule(done) {
+        if (this.status !== _status.CREATED || this.module.status !== _status.CREATED) {
+            return done(_errors.ERR_MOD_015);
+        }
+
+        /**
+         * Setting up event. When the module is beginning its setup.
+         * @event Module#setting_up
+         */
+        this.module.emit(_events.SETTING_UP);
+        this.setup((err) => {
+            if (err) {
+                done(err);
+            } else {
+                this.status = _status.SETUP;
+                this.module._changeStatus(_status.SETUP, this);
+
+                /**
+                 * Setup event. When the module has been setup.
+                 * @event Module#setup
+                 */
+                this.module.emit(_events.SETUP);
+                done(null);
+            }
+        });
+    }
+
+    enableModule(done) {
+        if (this.status !== _status.SETUP || this.module.status !== _status.SETUP) {
+            return done(_errors.ERR_MOD_016);
+        }
+
+        /**
+         * Enabling event. When the module is about to be enabled.
+         * @event Module#enabling
+         */
+        this.module.emit(_events.ENABLING);
+        this.enable((err) => {
+            if (err) {
+                done(err);
+            } else {
+                this.status = _status.ENABLED;
+                this.module._changeStatus(_status.ENABLED, this);
+
+                /**
+                 * Enabled event. When the module has been enabled.
+                 * @event Module#enabled
+                 */
+                this.module.emit(_events.ENABLED);
+                done(null);
+            }
+        });
+    }
+
+    disableModule(done) {
+        if (this.status !== _status.ENABLED || this.module.status !== _status.ENABLED) {
+            return done(_errors.ERR_MOD_017);
+        }
+
+        /**
+         * Disabling event. When the module is about to be disabled.
+         * @event Module#disabling
+         */
+        this.module.emit(_events.DISABLING);
+        this.disable((err) => {
+            if (err) {
+                done(err);
+            } else {
+                this.status = _status.DISABLED;
+                this.module._changeStatus(_status.DISABLED, this);
+
+                /**
+                 * Disabled event. When the module has been disabled.
+                 * @event Module#disabled
+                 */
+                this.module.emit(_events.DISABLED);
+                done(null);
+            }
+        });
+    }
+
+    destroyModule(done) {
+        if (this.status !== _status.DISABLED || this.module.status !== _status.DISABLED) {
+            return done(_errors.ERR_MOD_018);
+        }
+
+        /**
+         * Destroying event. When the module is about to be destroyed.
+         * @event Module#destroying
+         */
+        this.module.emit(_events.DESTROYING);
+        this.destroy((err) => {
+            if (err) {
+                done(err);
+            } else {
+                this.status = _status.DESTROYED;
+                this.module._changeStatus(_status.DESTROYED, this);
+
+                /**
+                 * Destroyed event. When the module has been destroyed.
+                 * @event Module#destroyed
+                 */
+                this.module.emit(_events.DESTROYED);
+                done(null);
+            }
+        });
+    }
+
+}
+
+module.exports = ModuleWrapper;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Mon Oct 31 2016 15:54:39 GMT+0100 (Paris, Madrid) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
