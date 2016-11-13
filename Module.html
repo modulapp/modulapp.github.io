@@ -136,55 +136,15 @@ The id parameter is required, it could be either a String or an Object represent
 
     <h5>Examples</h5>
 
-    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
-let myModule = new Module('myModule');
-
-myModule.foo = 'foo';
-myModule.bar = function() {
-    // this is a custom method
-};
-
-myModule.setup = function(app, options, imports, done) {
-    // this is overriding the setup  method
-
-    let logger = imports.logger;
-    logger.log('setting up myModule');
-    done(null);
-};
-
-module.exports = myModule;</code></pre>
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;let myModule = new Module('myModule');myModule.foo = 'foo';myModule.bar = function() {    // this is a custom method};myModule.setup = function(app, options, imports, done) {    // this is overriding the setup  method    let logger = imports.logger;    logger.log('setting up myModule');    done(null);};module.exports = myModule;</code></pre>
 
         <p class="code-caption">constructor with a String argument</p>
 
-    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
-let myModule = new Module('myModule');
-console.log(myModule.id); // -> 'myModule'
-console.log(myModule.status); // -> 'created'
-console.log(myModule.version); // -> undefined
-console.log(myModule.options); // -> {}
-console.log(myModule.dependencies); // -> []</code></pre>
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;let myModule = new Module('myModule');console.log(myModule.id); // -> 'myModule'console.log(myModule.status); // -> 'created'console.log(myModule.version); // -> undefinedconsole.log(myModule.options); // -> {}console.log(myModule.dependencies); // -> []</code></pre>
 
         <p class="code-caption">constructor with a Object argument</p>
 
-    <pre class="prettyprint"><code>const packagejson = require('package.json');
-// {
-//    name: 'myModule',
-//    version: '1.0.0',
-//    module: {
-//      dependencies: ['logger'],
-//      options: {
-//        port: 8080
-//      }
-//    }
-// }
-
-const Module = require('modulapp').Module;
-let myModule = new Module('myModule');
-console.log(myModule.id); // -> 'myModule'
-console.log(myModule.status); //  ->'created'
-console.log(myModule.version); // -> '1.0.0'
-console.log(myModule.options); // -> {port: 8080}
-console.log(myModule.dependencies); // -> ['logger']</code></pre>
+    <pre class="prettyprint"><code>const packagejson = require('package.json');// {//    name: 'myModule',//    version: '1.0.0',//    module: {//      dependencies: ['logger'],//      options: {//        port: 8080//      }//    }// }const Module = require('modulapp').Module;let myModule = new Module('myModule');console.log(myModule.id); // -> 'myModule'console.log(myModule.status); //  ->'created'console.log(myModule.version); // -> '1.0.0'console.log(myModule.options); // -> {port: 8080}console.log(myModule.dependencies); // -> ['logger']</code></pre>
 
 
 
@@ -454,9 +414,7 @@ console.log(myModule.dependencies); // -> ['logger']</code></pre>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>myModule.on(Module.events.SETUP, () => {
-    // define behavior when myModule has been setup
-});</code></pre>
+    <pre class="prettyprint"><code>myModule.on(Module.events.SETUP, () => {    // define behavior when myModule has been setup});</code></pre>
 
 
 
@@ -554,9 +512,7 @@ console.log(myModule.dependencies); // -> ['logger']</code></pre>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>if (myModule.status === Module.status.ENABLED) {
-    myModule.foo();
-}</code></pre>
+    <pre class="prettyprint"><code>if (myModule.status === Module.status.ENABLED) {    myModule.foo();}</code></pre>
 
 
 
@@ -646,8 +602,7 @@ console.log(myModule.dependencies); // -> ['logger']</code></pre>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(myModule.id); // -> 'myModule'
-myModule.id = 'anotherId'; // -> throw Error read-only</code></pre>
+    <pre class="prettyprint"><code>console.log(myModule.id); // -> 'myModule'myModule.id = 'anotherId'; // -> throw Error read-only</code></pre>
 
 
 
@@ -738,8 +693,7 @@ The value is part of the <a href="Module.html#.status">supported status</a>.</p>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(myModule.status); // -> 'created'
-myModule.status = Module.status.SETUP; // -> throw Error read-only</code></pre>
+    <pre class="prettyprint"><code>console.log(myModule.status); // -> 'created'myModule.status = Module.status.SETUP; // -> throw Error read-only</code></pre>
 
 
 
@@ -829,8 +783,7 @@ myModule.status = Module.status.SETUP; // -> throw Error read-only</code></pre>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(myModule.version); // -> '1.0.0'
-myModule.version = '1.0.1'; // -> throw Error read-only</code></pre>
+    <pre class="prettyprint"><code>console.log(myModule.version); // -> '1.0.0'myModule.version = '1.0.1'; // -> throw Error read-only</code></pre>
 
 
 
@@ -922,9 +875,7 @@ Setting null or undefined replaces the current options by an empty Object {}.</p
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(myModule.options); // -> {port: 8080}
-myModule.options = {host: 'localhost'}; // -> {host: 'localhost'}
-myModule.options = null; // -> {}</code></pre>
+    <pre class="prettyprint"><code>console.log(myModule.options); // -> {port: 8080}myModule.options = {host: 'localhost'}; // -> {host: 'localhost'}myModule.options = null; // -> {}</code></pre>
 
 
 
@@ -1017,10 +968,7 @@ Setting a String will build an Array with that single String.</p>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(myModule.dependencies); // -> ['logger']
-myModule.dependencies = ['server', 'db']; // -> ['server', 'db']
-myModule.dependencies = null; // -> []
-myModule.dependencies = 'server'; // -> ['server']</code></pre>
+    <pre class="prettyprint"><code>console.log(myModule.dependencies); // -> ['logger']myModule.dependencies = ['server', 'db']; // -> ['server', 'db']myModule.dependencies = null; // -> []myModule.dependencies = 'server'; // -> ['server']</code></pre>
 
 
 
@@ -1113,10 +1061,7 @@ Merge with existing options.</p>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(myModule.options); // -> {port: 8080}
-myModule.addOptions({host: 'localhost'}); // -> {port: 8080, host: 'localhost'}
-myModule.addOptions(null); // -> {port: 8080, host: 'localhost'}
-myModule.addOptions(); // -> {port: 8080, host: 'localhost'}</code></pre>
+    <pre class="prettyprint"><code>console.log(myModule.options); // -> {port: 8080}myModule.addOptions({host: 'localhost'}); // -> {port: 8080, host: 'localhost'}myModule.addOptions(null); // -> {port: 8080, host: 'localhost'}myModule.addOptions(); // -> {port: 8080, host: 'localhost'}</code></pre>
 
 
 
@@ -1318,12 +1263,7 @@ Merge with existing dependencies and check the new dependencies, flatten the Arr
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>console.log(myModule.dependencies); // -> ['logger']
-myModule.addDependencies(['server']); // -> ['logger', 'server']
-myModule.addDependencies(null); // -> ['logger', 'server']
-myModule.addDependencies(); // -> ['logger', 'server']
-myModule.addDependencies('socket'); // -> ['logger', 'server', 'socket']
-myModule.addDependencies('socket', 'utils', ['db', 'server']); // -> ['logger', 'server', 'socket', 'utils', 'db']</code></pre>
+    <pre class="prettyprint"><code>console.log(myModule.dependencies); // -> ['logger']myModule.addDependencies(['server']); // -> ['logger', 'server']myModule.addDependencies(null); // -> ['logger', 'server']myModule.addDependencies(); // -> ['logger', 'server']myModule.addDependencies('socket'); // -> ['logger', 'server', 'socket']myModule.addDependencies('socket', 'utils', ['db', 'server']); // -> ['logger', 'server', 'socket', 'utils', 'db']</code></pre>
 
 
 
@@ -1524,13 +1464,7 @@ Once the app is resolved, this method is not available anymore.</p>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
-let myModule = new Module('myModule');
-
-// override the default setup function
-myModule.setup = function(app, options, imports, done) {
-   // place your custom code to be executed when myModule is setup
-}</code></pre>
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;let myModule = new Module('myModule');// override the default setup functionmyModule.setup = function(app, options, imports, done) {   // place your custom code to be executed when myModule is setup}</code></pre>
 
 
 
@@ -1752,13 +1686,7 @@ Once the app is resolved, this method is not available anymore.</p>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
-let myModule = new Module('myModule');
-
-// override the default enable function
-myModule.enable = function(app, options, imports, done) {
-   // place your custom code to be executed when myModule is enable
-}</code></pre>
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;let myModule = new Module('myModule');// override the default enable functionmyModule.enable = function(app, options, imports, done) {   // place your custom code to be executed when myModule is enable}</code></pre>
 
 
 
@@ -1980,13 +1908,7 @@ Once the app is resolved, this method is not available anymore.</p>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
-let myModule = new Module('myModule');
-
-// override the default disable function
-myModule.disable = function(app, options, imports, done) {
-   // place your custom code to be executed when myModule is disabled
-}</code></pre>
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;let myModule = new Module('myModule');// override the default disable functionmyModule.disable = function(app, options, imports, done) {   // place your custom code to be executed when myModule is disabled}</code></pre>
 
 
 
@@ -2208,13 +2130,7 @@ Once the app is resolved, this method is not available anymore.</p>
 
     <h5>Example</h5>
 
-    <pre class="prettyprint"><code>const Module = require('modulapp').Module;
-let myModule = new Module('myModule');
-
-// override the default destroy function
-myModule.destroy = function(app, options, imports, done) {
-   // place your custom code to be executed when myModule is destroyed
-}</code></pre>
+    <pre class="prettyprint"><code>const Module = require('modulapp').Module;let myModule = new Module('myModule');// override the default destroy functionmyModule.destroy = function(app, options, imports, done) {   // place your custom code to be executed when myModule is destroyed}</code></pre>
 
 
 
@@ -3061,7 +2977,7 @@ myModule.destroy = function(app, options, imports, done) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Tue Nov 01 2016 14:19:57 GMT+0100 (Paris, Madrid) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Sun Nov 13 2016 14:00:54 GMT+0100 (Paris, Madrid) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
